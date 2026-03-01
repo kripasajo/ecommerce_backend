@@ -100,5 +100,3 @@ To build a production-ready, scalable e-commerce backend demonstrating:
   python manage.py migrate
 4.   Run server:
    python manage.py runserver
-
-## 📂 Project Structure
