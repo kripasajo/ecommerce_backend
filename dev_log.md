@@ -47,5 +47,13 @@ create user models - for authentication to be more flexible , futureproof.
 
     7.register model in admin.py
 
+Django REST Framework (DRF) Integration - make a JSON based api server
+    We now support:
+
+    Frontend (React / Mobile) → Django API → JSON
+    steps:
+    1. install djangorestframework and add it to requirements.txt
+    2.
+
 
 

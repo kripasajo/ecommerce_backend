@@ -102,6 +102,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Custom User Model-without this django will use the default user model and we will not be able to use our custom user model
 AUTH_USER_MODEL = 'accounts.User'
 
+# Django REST Framework   
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
