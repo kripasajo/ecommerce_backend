@@ -24,7 +24,6 @@ SECRET_KEY = 'django-insecure-b%x=@r@u@pyb**10c85*g)5*t=!be+k11beuo06sidej)1vki$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',                        #custom user app
 ]
 
 MIDDLEWARE = [
@@ -97,6 +97,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Custom User Model-without this django will use the default user model and we will not be able to use our custom user model
+AUTH_USER_MODEL = 'accounts.User'
 
 
 # Internationalization
