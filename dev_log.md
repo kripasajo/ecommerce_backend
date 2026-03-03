@@ -72,7 +72,17 @@ two phases:
     1.validation phase
     2.creation of user phase
     password handling 
-
+steps:
+    1. create serializers.py
+        this creates the data validation+tranformation layer
+        it defines what fields are allowed and required, how to create user properly , hash password safely
+    2. create register view
+        This connects:
+        Incoming HTTP request → Serializer → Database → HTTP response
+        - we ccheck is valid and if it is then we save the user
+    3. wire the url route
+        URL → View → Serializer → Model → Database
+        it defines the url that has to be visted to run something
 register engpoint:
 
 JWT Authentication: It stands for JSON web tokens

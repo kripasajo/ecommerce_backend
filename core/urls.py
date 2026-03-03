@@ -16,17 +16,13 @@ Including another URLconf
 """
 
 
+
 from django.contrib import admin
 from django.urls import path
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
-
-from django.urls import path
-from accounts.views import health_check
+from accounts.views import health_check, register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/health/', health_check),
+    path('api/register/', register),
 ]

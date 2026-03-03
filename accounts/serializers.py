@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True) #we don't want to return the password in the response
 
     class Meta:
         model = User
@@ -16,6 +16,6 @@ class RegisterSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             username=validated_data['username']
         )
-        user.set_password(validated_data['password'])
+        user.set_password(validated_data['password']) #we need to set the password using the set_password method to hash the password before saving it to the database
         user.save()
         return user
