@@ -20,9 +20,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from accounts.views import health_check, register
+from accounts.views import health_check, register, login_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/health/', health_check),
     path('api/register/', register),
+    path('api/login/', login_view),
 ]

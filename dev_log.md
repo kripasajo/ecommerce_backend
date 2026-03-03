@@ -63,27 +63,38 @@ Django REST Framework (DRF) Integration - make a JSON based api server
 
 Day 4:
 serializers: for api validation and data conversion
-converts python model to JSON and back and acts as a tranlations layer
-there are two types of serialisers:
-    1.Basic serializer: you manually write every fiels, it is more controlled and more work
-    2.Model serializer: it builds fields automatically
+    converts python model to JSON and back and acts as a tranlations layer
+    there are two types of serialisers:
+        1.Basic serializer: you manually write every fiels, it is more controlled and more work
+        2.Model serializer: it builds fields automatically
 
-two phases:
-    1.validation phase
-    2.creation of user phase
-    password handling 
+    two phases:
+        1.validation phase
+        2.creation of user phase
+        password handling 
+    steps:
+        1. create serializers.py
+            this creates the data validation+tranformation layer
+            it defines what fields are allowed and required, how to create user properly , hash password safely
+        2. create register view
+            This connects:
+            Incoming HTTP request → Serializer → Database → HTTP response
+            - we ccheck is valid and if it is then we save the user
+        3. wire the url route
+            URL → View → Serializer → Model → Database
+            it defines the url that has to be visted to run something
+
+        4. testing: 
+        admin registration successful . 
+register endpoint:
+we went to /api/register and we registred a new user using email , username , password
+
+Implement Login:
+Authenticate existing user using Django’s authentication system.
 steps:
-    1. create serializers.py
-        this creates the data validation+tranformation layer
-        it defines what fields are allowed and required, how to create user properly , hash password safely
-    2. create register view
-        This connects:
-        Incoming HTTP request → Serializer → Database → HTTP response
-        - we ccheck is valid and if it is then we save the user
-    3. wire the url route
-        URL → View → Serializer → Model → Database
-        it defines the url that has to be visted to run something
-register engpoint:
+    1. add login view
+    2. wire url
+    3. tested
 
 JWT Authentication: It stands for JSON web tokens
 until now we were using session authentication for login
