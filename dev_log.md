@@ -55,13 +55,19 @@ Django REST Framework (DRF) Integration - make a JSON based api server
     steps:
     1. install djangorestframework and add it to requirements.txt
     2. add rest_framework to installed apps and add to settings
-    3. Add to view
+    3. Add to views , create a simple test api endpoint
     4. wire
     5. run /api/health/
 
-Day 4:
-serializers: for api validation
+    result: api endpoint is wokring
 
-JWT Authentication:
+Day 4:
+serializers: for api validation and data conversion
+converts python model to JSON and back
+
+register engpoint:
+
+JWT Authentication: It stands for JSON web tokens
+until now we were using session authentication for login
 
 
