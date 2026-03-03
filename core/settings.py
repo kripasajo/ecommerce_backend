@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',  #custom user app
-    'rest_framework',                      
+    'rest_framework',   #django rest framework which we will use to build our api endpoints and handle api requests and responses                   
 ]
 
 MIDDLEWARE = [
@@ -105,10 +105,10 @@ AUTH_USER_MODEL = 'accounts.User'
 # Django REST Framework   
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',  #for now we are using session authentication but in production we will use token authentication or jwt authentication
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.AllowAny', #for now we are allowing any user to access the api but in production we will use IsAuthenticated permission class to restrict access to authenticated users only
     ),
 }
 

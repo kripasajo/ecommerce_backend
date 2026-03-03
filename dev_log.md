@@ -47,13 +47,21 @@ create user models - for authentication to be more flexible , futureproof.
 
     7.register model in admin.py
 
+    so far we have only till the admin panel and now
 Django REST Framework (DRF) Integration - make a JSON based api server
     We now support:
 
     Frontend (React / Mobile) → Django API → JSON
     steps:
     1. install djangorestframework and add it to requirements.txt
-    2.
+    2. add rest_framework to installed apps and add to settings
+    3. Add to view
+    4. wire
+    5. run /api/health/
 
+Day 4:
+serializers: for api validation
+
+JWT Authentication:
 
 
