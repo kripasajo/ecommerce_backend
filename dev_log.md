@@ -63,7 +63,15 @@ Django REST Framework (DRF) Integration - make a JSON based api server
 
 Day 4:
 serializers: for api validation and data conversion
-converts python model to JSON and back
+converts python model to JSON and back and acts as a tranlations layer
+there are two types of serialisers:
+    1.Basic serializer: you manually write every fiels, it is more controlled and more work
+    2.Model serializer: it builds fields automatically
+
+two phases:
+    1.validation phase
+    2.creation of user phase
+    password handling 
 
 register engpoint:
 
