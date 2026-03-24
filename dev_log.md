@@ -135,7 +135,15 @@ Day 5 - 24/03/26
             Embedded your user ID inside the token
             Returned access + refresh tokens
     4️ Protect endpoints using IsAuthenticated
+        Open accounts/views.py Modify your health check:
     5️ Test access with and without token
+        without: "detail": "Authentication credentials were not provided."
+        with:
+        Thunder Client simulates a real API consumer
+        Login → Get Token → Use Token → Access Protected API
+            Thunder Client is used in the “Use Token” step
+        steps:
+        install thundercleint , create a new request , in get add /api/health/ link , add header authorization and add Bearer <access_token> , then send request and we will see an ok .
 
 🛡 2. Protect Endpoints
 
