@@ -148,15 +148,14 @@ Day 5 - 24/03/26
 🛡 2. Protect Endpoints
 
 Switch default permission to IsAuthenticated
-
+    Before this every api was public unless protected manually . After this every API is protected by default and you must explicity allow public ones
 Protect specific routes
-
+    to open only specific routes
 Test unauthorized access
 
 🔄 3. Refresh Token Endpoint
-
+Allow users to stay logged in without re-entering password
 Implement token refresh
-
 Test refresh lifecycle
 
 📦 4. Optional (Clean Auth Architecture)

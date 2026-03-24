@@ -22,11 +22,14 @@ from django.urls import path
 from accounts.views import health_check, register
 from accounts.views import health_check, register, login_view
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.permissions import AllowAny
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/health/', health_check),
     path('api/register/', register),
     path('api/login/', login_view),
-    path('api/token/', TokenObtainPairView.as_view()),
+    path('api/token/', TokenObtainPairView.as_view(permission_classes=[AllowAny])),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

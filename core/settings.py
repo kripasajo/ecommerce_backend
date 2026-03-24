@@ -108,7 +108,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny', #for now we are allowing any user to access the api but in production we will use IsAuthenticated permission class to restrict access to authenticated users only
+    'rest_framework.permissions.IsAuthenticated',
     ),
 }
 

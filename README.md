@@ -9,7 +9,7 @@ This project is being developed step-by-step with professional engineering pract
 ## 🚀 Current Phase
 **Phase 1 – Infrastructure & Foundation Setup**
 
-Engineered a RESTful backend using Django & DRF featuring custom user authentication, secure password hashing, token-based authentication (JWT), and modular API architecture.
+Engineered a RESTful backend using Django & DRF featuring custom user authentication, secure password hashing, token-based authentication (JWT), and modular API architecture, real-world  testing using thunderclient.
 ---
 
 ## ✅ Completed So Far
