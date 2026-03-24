@@ -99,4 +99,66 @@ steps:
 JWT Authentication: It stands for JSON web tokens
 until now we were using session authentication for login
 
+what is json?
+    JWT (JSON Web Token) authentication is a secure, stateless, and compact method for transmitting user information between a client and a server. After logging in, the server issues a digitally signed token (JWT) to the client, which is sent with subsequent requests to verify identity and authorization, eliminating the need for server-side session storage.
+
+    
+Day 5 - 24/03/26
+
+    1️ Install SimpleJWT
+        pip install djangorestframework-simplejwt
+        This gives us:
+            Token generation
+            Token validation
+            Refresh mechanism
+            Integration with DRF
+    2️ Configure DRF to use JWT authentication
+        In settings.py we will replace SessionAuthentication with JWTAuthentication
+    3️ Replace manual login with JWT token endpoint
+        we use ready made drf jwt-view TokenObtainPairView
+        This view will:
+            Authenticate user (just like your login)
+            If correct → generate tokens
+            Return:
+                Access Token
+                    Short-lived (e.g., 5–60 mins)
+                    Used to access protected APIs
+                    Sent in every request
+                Refresh Token
+                    Long-lived (e.g., days)
+                    Used to get a new access token
+                    Not used for normal API calls
+        go to http://127.0.0.1:8000/api/token/
+        enter username and password and then what happened
+            Authenticated your user
+            Generated JWT tokens
+            Embedded your user ID inside the token
+            Returned access + refresh tokens
+    4️ Protect endpoints using IsAuthenticated
+    5️ Test access with and without token
+
+🛡 2. Protect Endpoints
+
+Switch default permission to IsAuthenticated
+
+Protect specific routes
+
+Test unauthorized access
+
+🔄 3. Refresh Token Endpoint
+
+Implement token refresh
+
+Test refresh lifecycle
+
+📦 4. Optional (Clean Auth Architecture)
+
+Separate auth/ URLs
+
+Modular URL configuration
+
+Improve response structure
+
+
+
 

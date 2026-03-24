@@ -9,6 +9,7 @@ This project is being developed step-by-step with professional engineering pract
 ## 🚀 Current Phase
 **Phase 1 – Infrastructure & Foundation Setup**
 
+Engineered a RESTful backend using Django & DRF featuring custom user authentication, secure password hashing, token-based authentication (JWT), and modular API architecture.
 ---
 
 ## ✅ Completed So Far
@@ -18,6 +19,9 @@ This project is being developed step-by-step with professional engineering pract
 - Proper project structure (no nested mistakes)
 - Virtual environment setup
 - Dependency management using `requirements.txt`
+- Create custom user model (email-based authentication)
+- Create `accounts` app
+- Integrate Django REST Framework (DRF)
 
 ### Database
 - SQLite setup for development
@@ -70,12 +74,96 @@ ecommerce_backend/
 
 ## 🔜 Upcoming (Next Steps)
 
-- Create custom user model (email-based authentication)
-- Create `accounts` app
-- Integrate Django REST Framework (DRF)
 - Implement JWT authentication
 - Migrate from SQLite to PostgreSQL
+phase 2:
+1. Category System
 
+Category model
+
+Nested categories (optional advanced)
+
+Slug-based routing
+
+Category API endpoints
+
+📦 2. Product System
+
+Product model
+
+Slug field
+
+Price field
+
+Stock tracking
+
+Active/inactive flag
+
+Product listing endpoint
+
+Product detail endpoint
+
+Filtering & sorting
+
+Advanced:
+
+Product images
+
+Multiple product variants (size, color)
+
+SKU management
+
+🧺 3. Cart System
+
+Cart model
+
+CartItem model
+
+One cart per user
+
+Add to cart endpoint
+
+Remove from cart endpoint
+
+Update quantity endpoint
+
+Auto total calculation
+
+Advanced:
+
+Handle duplicate adds
+
+Atomic cart updates
+
+📑 4. Order System
+
+Order model
+
+OrderItem model
+
+Snapshot product price at time of purchase
+
+Order status (Pending, Paid, Shipped, Delivered)
+
+Order creation endpoint
+
+Order history endpoint
+
+Advanced:
+
+Transaction atomicity
+
+Prevent double order submission
+
+💳 5. Payment Logic (Mocked)
+
+Payment status tracking
+
+Payment reference ID
+
+Order locking after payment
+
+We won’t integrate real gateway yet — but simulate logic properly.
 ---
 
 ## 🎯 Project Goal
