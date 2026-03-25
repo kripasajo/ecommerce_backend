@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',  #custom user app
     'rest_framework',   #django rest framework which we will use to build our api endpoints and handle api requests and responses                   
+    'products',   #products app which will handle all the product related functionality like creating products, listing products, etc.
 ]
 
 MIDDLEWARE = [

@@ -18,12 +18,13 @@ Including another URLconf
 
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from accounts.views import health_check, register
 from accounts.views import health_check, register, login_view
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenRefreshView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +33,6 @@ urlpatterns = [
     path('api/login/', login_view),
     path('api/token/', TokenObtainPairView.as_view(permission_classes=[AllowAny])),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/', include('products.urls')), #include the urls from the products app to handle all the product related endpoints like listing products, creating products, etc.
 ]
+

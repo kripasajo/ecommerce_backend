@@ -158,13 +158,45 @@ Allow users to stay logged in without re-entering password
 Implement token refresh
 Test refresh lifecycle
 
-📦 4. Optional (Clean Auth Architecture)
-
+📦 4. Optional (Clean Auth Architecture)  // not done
 Separate auth/ URLs
-
 Modular URL configuration
-
 Improve response structure
+
+Day 6: 25/03/2026
+Phase 2: User → Product → Cart → Order
+🧩 Core Systems
+ Product & Category system
+    1. create a mew app python manage.py startapp products -> we got products folder
+    2. register the model  in core/setting in the installed apps
+    3.in products/models
+    Manager model
+    Base model:
+    category model:
+    -heirarchy
+    -unique category name
+    product model:
+    - slug
+    4. in products/views
+    5. in products/serializers
+    -excluded is_delted
+    6. Run migrations after creating models
+    7. Register in admin panel
+    8. Test using DRF UI
+    -create category
+    -create product
+ Product Variants
+ Cart system
+ Order system (basic)
+ Order transactions (atomic)
+ Inventory system
+ Inventory locking (select_for_update)
+ Payment simulation
+⚡ Enhancements (after core works)
+ Reviews & ratings
+ RBAC (Admin / Seller / Customer)
+ Address system
+
 
 
 
