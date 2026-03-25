@@ -172,19 +172,33 @@ Phase 2: User → Product → Cart → Order
     3.in products/models
     Manager model
     Base model:
+        -is_deleted: it's added here so all models will get it
     category model:
-    -heirarchy
-    -unique category name
+        -parent → supports hierarchy
+        -indexes → faster queries (INTERVIEW GOLD)
+        -is_active → soft-disable categories
+        -unique category name
+        -on_delete=models.PROTECT instead of CASCADE:used PROTECT to ensure referential integrity and prevent accidental deletion of dependent records.
+        -soft delete pattern
     product model:
-    - slug
+        -slug: SEO + API friendly
     4. in products/views
+        
     5. in products/serializers
     -excluded is_delted
     6. Run migrations after creating models
     7. Register in admin panel
-    8. Test using DRF UI
+    8. Add Filtering + Search + Ordering
+        intsall django-filter
+        update view
+    9. in products/urls.py
+        connect to core/urls.py
+    10. Test using DRF UI
     -create category
     -create product
+    -test filters
+    -search
+    -sort
  Product Variants
  Cart system
  Order system (basic)
