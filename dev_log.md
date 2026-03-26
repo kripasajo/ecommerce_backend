@@ -236,7 +236,10 @@ Day 7: 26/03/2026
   Cart system (User → Cart → CartItem → ProductVariant)
 Models
 Migrations
-Serializer
+Serializer:
+ cartitemserializer with validation: so it shows can't add more items than stock from cart to prevent overselling
+ -productvarinat and productvariantid: seperates read and write representatons to provide detailed reponses while keeping input simple
+ cartserializer: api returns full cart. items, totalprice-SerializerMethodField to dynamically compute total cart value
 Views
 URLs
 Testing
