@@ -226,6 +226,9 @@ Day 7: 26/03/2026
 2.serializers
     -Add serialisers
     -Add validation in serializer: Serializer validation provides immediate user-friendly API errors, while model validation ensures database-level integrity.
+3.views
+4.urls
+5.tests
 
  Cart system
  Order system (basic)
