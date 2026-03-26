@@ -211,7 +211,7 @@ Day 7: 26/03/2026
     -soft deleted test
     all tests pass
  Product Variants
-    1.CREATE ProductVariant MODEL
+1.CREATE ProductVariant MODEL
     -foreign key: one-to-many relationship to support multiple configurations per product
     -related_name='variants': Used related_name for reverse querying and cleaner ORM access.
     -size and color: Chose a structured approach instead of dynamic attributes to keep the system simple and scalable.
@@ -222,6 +222,10 @@ Day 7: 26/03/2026
     -unique constraint
     -__str__
     2.Run migrations
+    3.Register with admin
+2.serializers
+    -Add serialisers
+    -Add validation in serializer: Serializer validation provides immediate user-friendly API errors, while model validation ensures database-level integrity.
 
  Cart system
  Order system (basic)
