@@ -233,12 +233,18 @@ Day 7: 26/03/2026
 7.select_related/prefetch_related:optimized queries using prefetch_related to avoid N+1 query problems.”
 
 
- Cart system
+  Cart system (User → Cart → CartItem → ProductVariant)
+Models
+Migrations
+Serializer
+Views
+URLs
+Testing
+
  Order system (basic)
-
-
-
  Order transactions (atomic)
+
+ 
  Inventory system
  Inventory locking (select_for_update)
  Payment simulation
