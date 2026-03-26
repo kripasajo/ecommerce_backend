@@ -1,5 +1,6 @@
 #add custom manager to filter out deleted products and categories. This will allow us to easily get only the active products and categories without having to filter them manually every time we query the database.
 from django.db import models
+from django.core.validators import MinValueValidator #for variant model
 
 class ActiveManager(models.Manager):
     def get_queryset(self):
@@ -92,4 +93,42 @@ class Product(BaseModel):
             models.Index(fields=['price']),
         ]
 
-    
+#product variant model
+class ProductVariant(BaseModel):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='variants'
+    )
+
+    size = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        validators=[MinValueValidator(0)]
+    )
+
+    stock = models.PositiveIntegerField()
+
+    sku = models.CharField(max_length=100, unique=True)
+
+    objects = models.Manager()
+    active_objects = ActiveManager()
+
+    def __str__(self):
+        return f"{self.product.name} - {self.size} - {self.color}"
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['product']),
+            models.Index(fields=['sku']),
+        ]
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=['product', 'size', 'color'],
+                name='unique_variant_per_product'
+            )
+        ]   

@@ -170,9 +170,11 @@ Phase 2: User → Product → Cart → Order
     1. create a mew app python manage.py startapp products -> we got products folder
     2. register the model  in core/setting in the installed apps
     3.in products/models
-    Manager model
-    Base model:
+    ActiveManager model: handles queries - controls how data is retrieved
+        -implemented a custom model manager to automatically exclude soft-deleted records from queries, improving code cleanliness and reducing repetition.
+    Base model: handles fields
         -is_deleted: it's added here so all models will get it
+        - we get timestamps
     category model:
         -parent → supports hierarchy
         -indexes → faster queries (INTERVIEW GOLD)
@@ -180,12 +182,16 @@ Phase 2: User → Product → Cart → Order
         -unique category name
         -on_delete=models.PROTECT instead of CASCADE:used PROTECT to ensure referential integrity and prevent accidental deletion of dependent records.
         -soft delete pattern
+        -slug index
+        -added database indexes on frequently queried fields like slug and parent in the Category model to improve query performance, especially for hierarchical queries
     product model:
         -slug: SEO + API friendly
     4. in products/views
         
-    5. in products/serializers
-    -excluded is_delted
+    5. in products/serializers-for drf to process requests
+    - Converts your Django models → JSON (API response)
+    -Converts JSON → model (when creating product)
+    -excluded is_delted as users should not control deletion
     6. Run migrations after creating models
     7. Register in admin panel
     8. Add Filtering + Search + Ordering
@@ -193,15 +199,35 @@ Phase 2: User → Product → Cart → Order
         update view
     9. in products/urls.py
         connect to core/urls.py
-    10. Test using DRF UI
+    10.Add category API and pagination
+        pagination is needed for scalbility
+Day 7: 26/03/2026
+    11. Test using DRF UI
     -create category
     -create product
     -test filters
     -search
     -sort
+    -soft deleted test
+    all tests pass
  Product Variants
+    1.CREATE ProductVariant MODEL
+    -foreign key: one-to-many relationship to support multiple configurations per product
+    -related_name='variants': Used related_name for reverse querying and cleaner ORM access.
+    -size and color: Chose a structured approach instead of dynamic attributes to keep the system simple and scalable.
+    -price with vaalidator:
+    -stock'
+    -sku
+    -indexes
+    -unique constraint
+    -__str__
+    2.Run migrations
+
  Cart system
  Order system (basic)
+
+
+
  Order transactions (atomic)
  Inventory system
  Inventory locking (select_for_update)
@@ -210,6 +236,9 @@ Phase 2: User → Product → Cart → Order
  Reviews & ratings
  RBAC (Admin / Seller / Customer)
  Address system
+
+ Phase 3: Advanced Backend engineering
+
 
 
 

@@ -21,3 +21,4 @@ class ProductListCreateView(ListCreateAPIView):
 class CategoryListCreateView(ListCreateAPIView):
     queryset = Category.active_objects.all()   # ✅ use manager
     serializer_class = CategorySerializer
+    permission_classes = [AllowAny]   # ✅ ADD THIS TEMPORARILY
