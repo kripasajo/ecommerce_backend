@@ -18,7 +18,7 @@ class ProductListCreateView(ListCreateAPIView):
 
 #added category api
 class CategoryListCreateView(ListCreateAPIView):
-    queryset = Category.active_objects.all()   # ✅ use manager
+    queryset = Product.active_objects.prefetch_related('variants')   # ✅ use manager
     serializer_class = CategorySerializer
     permission_classes = [AllowAny]   # ✅ ADD THIS TEMPORARILY
 

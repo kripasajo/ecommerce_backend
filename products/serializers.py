@@ -9,13 +9,6 @@ class CategorySerializer(serializers.ModelSerializer):
         
         
 
-
-class ProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Product
-        exclude = ['is_deleted'] #exclude the is_deleted field from the serializer because we don't want to return it in the response. This field is used internally to filter out deleted products and categories, but it is not relevant to the API clients. By excluding it from the serializer, we can keep our API responses clean and focused on the relevant data.
-        
-
 class ProductVariantSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductVariant
@@ -30,3 +23,15 @@ class ProductVariantSerializer(serializers.ModelSerializer):
         if value < 0:
             raise serializers.ValidationError("Stock cannot be negative")
         return value
+    
+    def validate(self, data):   
+        if data.get('stock', 0) < 0:
+            raise serializers.ValidationError("Invalid stock")
+        return data
+    
+class ProductSerializer(serializers.ModelSerializer):
+    variants = ProductVariantSerializer(many=True, read_only=True)
+    class Meta:
+        model = Product
+        exclude = ['is_deleted'] #exclude the is_deleted field from the serializer because we don't want to return it in the response. This field is used internally to filter out deleted products and categories, but it is not relevant to the API clients. By excluding it from the serializer, we can keep our API responses clean and focused on the relevant data.
+        

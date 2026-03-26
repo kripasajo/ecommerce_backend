@@ -229,6 +229,9 @@ Day 7: 26/03/2026
 3.views
 4.urls
 5.tests
+6.nested varinats: used nested serializers to include product variants within product responses to reduce API calls and improve performance
+7.select_related/prefetch_related:optimized queries using prefetch_related to avoid N+1 query problems.”
+
 
  Cart system
  Order system (basic)
