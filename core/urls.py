@@ -34,5 +34,6 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(permission_classes=[AllowAny])),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include('products.urls')), #include the urls from the products app to handle all the product related endpoints like listing products, creating products, etc.
+    path('api/cart/', include('cart.urls')),
 ]
 

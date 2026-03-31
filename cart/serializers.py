@@ -5,8 +5,8 @@ from products.serializers import ProductVariantSerializer
 
 class CartItemSerializer(serializers.ModelSerializer):
 
-    product_variant = ProductVariantSerializer(read_only=True)
-    product_variant_id = serializers.PrimaryKeyRelatedField(
+    product_variant = ProductVariantSerializer(read_only=True) #for read
+    product_variant_id = serializers.PrimaryKeyRelatedField( #for write
         queryset=ProductVariant.objects.all(),
         source='product_variant',
         write_only=True
@@ -27,9 +27,9 @@ class CartItemSerializer(serializers.ModelSerializer):
 
         if variant and quantity:
             if quantity > variant.stock:
-                raise serializers.ValidationError(
-                    f"Only {variant.stock} items available in stock"
-                )
+                raise serializers.ValidationError({
+                     "quantity": f"Only {variant.stock} items available in stock"
+                })
 
         return data
 

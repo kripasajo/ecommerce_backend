@@ -241,6 +241,10 @@ Serializer:
  -productvarinat and productvariantid: seperates read and write representatons to provide detailed reponses while keeping input simple
  cartserializer: api returns full cart. items, totalprice-SerializerMethodField to dynamically compute total cart value
 Views
+abstracted business logic into a service layer to improve maintainability and scalability
+- only logged in users can access cart
+-user can only modify their cart
+-view->service->model
 URLs
 Testing
 
