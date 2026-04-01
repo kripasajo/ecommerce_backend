@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'products',   #products app which will handle all the product related functionality like creating products, listing products, etc.
     'django_filters',
     'cart',
+    'orders',
+    
 
 ]
 

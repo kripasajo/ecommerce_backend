@@ -249,7 +249,29 @@ URLs
 Testing
 
  Order system (basic)
+1.Model
+  -Order 
+  -OrderItem
+2.Relationships
+3.serializers
+
+4.service layer
+
+5.view
+6.validations
+7.testing
+
  Order transactions (atomic)
+ 1.Database transactions
+ 2.Inventory locking
+ 3.Stock validation
+ 4.Stock reduction
+ 5.Failure handling
+ 6.Idempotency
+ 7.Order status flow
+ 8.Security
+ 9.Performance
+ 10.Add order history , detail api and pagination
 
  
  Inventory system
