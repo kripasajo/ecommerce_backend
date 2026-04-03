@@ -232,7 +232,7 @@ Day 7: 26/03/2026
 6.nested varinats: used nested serializers to include product variants within product responses to reduce API calls and improve performance
 7.select_related/prefetch_related:optimized queries using prefetch_related to avoid N+1 query problems.”
 
-
+day 8: 31/3/26
   Cart system (User → Cart → CartItem → ProductVariant)
 Models
 Migrations
@@ -248,44 +248,151 @@ abstracted business logic into a service layer to improve maintainability and sc
 URLs
 Testing
 
+
+Day 9: 1/4/2026
  Order system (basic)
 1.Model
   -Order 
   -OrderItem
 2.Relationships
+ order-> many orderitems
+ many orderitem->one product variant
+
 3.serializers
-
+orderitemserializer
+orderserializer
+    nestedproductinfo
+    orderitem is read only
+    view->service->model
+prefetch_related to avoid N+1 queries
+SerializerMethodField to expose computed metadata like item count without modifying the database schema
 4.service layer
-
+implemented order creation via a service layer that converts cart items into order items while maintaining price snapshots and clearing the cart.
 5.view
+optimized nested serialization using 
 6.validations
 7.testing
-
+extra feauture: control nested depth
+dont send unecessary data like stock and timestamps
+ 
+Day 10: 3/4/26 ( system design)
  Order transactions (atomic)
  1.Database transactions
+ # 🟢 Order Transactions (Atomic) — Summary
+
+## 🔹 1. Database Transactions
+- Used `transaction.atomic()` to wrap entire order creation
+- Ensures all operations succeed or rollback on failure
+
+**Concepts:** Atomicity (ACID), Consistency, Rollback
+
+
+## 🔹 2. Row-Level Locking
+- Used `select_for_update()` on product variants
+- Optimized by locking all variants in a single query (avoided N+1)
+
+**Concepts:** Pessimistic locking, Concurrency control, Race condition prevention
+
+
+## 🔹 3. Stock Validation
+- Validated stock inside transaction (`if stock < quantity`)
+- Raised error if insufficient
+
+**Concepts:** Data integrity, Defensive programming
+
+
+## 🔹 4. Stock Reduction
+- Reduced stock inside transaction
+- Used `update_fields=["stock"]` for optimized updates
+
+**Concepts:** Controlled state mutation, Efficient DB writes
+
+
+## 🔹 5. Bulk Operations
+- Used `bulk_create()` for creating order items
+
+**Concepts:** Batch processing, Reduced DB queries, Scalability
+
+
+## 🔹 6. Failure Handling
+- Handled:
+  - Validation errors → 400
+  - Database errors → 500
+  - Unexpected errors → 500
+- Added logging (`warning`, `error`, `critical`)
+
+**Concepts:** Graceful error handling, Observability, Secure responses
+
+
+## 🔹 7. Cart Consistency
+- Cleared cart only after successful transaction
+- Used `select_for_update()` before delete
+
+**Concepts:** Cross-entity consistency, Race condition safety
+
+
+## 🔹 8. Query Optimization
+- Used `select_related()` and `prefetch_related()`
+- Eliminated N+1 queries
+
+**Concepts:** ORM optimization, Efficient data fetching
+
+
+## 🔹 9. API Design
+- Standardized response format:
+  ```json
+  { "success": true/false, "data/message": ... }
  2.Inventory locking
  3.Stock validation
  4.Stock reduction
- 5.Failure handling
+ 5.Failure handling 
  6.Idempotency
  7.Order status flow
  8.Security
  9.Performance
  10.Add order history , detail api and pagination
 
- 
+ Day 11
  Inventory system
  Inventory locking (select_for_update)
  Payment simulation
+ 
+ Day 12
 ⚡ Enhancements (after core works)
  Reviews & ratings
  RBAC (Admin / Seller / Customer)
  Address system
 
+Day 13
  Phase 3: Advanced Backend engineering
+✅ Redis caching
+✅ Celery background jobs - async tasks
+✅ Email system
+✅ Payment simulation logic
+✅ Rate limiting
+✅ API throttling
 
 
+PHASE 4 — Intelligence Layer (Week 9–10)
+Recommendation system
+Analytics tracking
+Popular products ranking
+Sales dashboard API
 
+PHASE 5 — Production Engineering (Week 11–12)
+Dockerize project
+Setup Nginx
+Gunicorn
+Environment configs
+Logging
+Write test cases
+Add GitHub Actions CI/CD
+Deploy (Render / AWS / DigitalOcean) AWS S3 EC2
 
+Front end: React
 
+Resume descrition:
+Built a scalable E-commerce backend using Django and Django REST Framework with features including JWT authentication, product catalog, cart, and order management.Implemented atomic order transactions, optimized database queries, and designed RESTful APIs following best practices.
+Integrated caching (Redis) and async processing (Celery) to enhance performance and scalability.inventory locking using database transactions, Dockerized deployment, and CI/CD integration.
 
+Built a scalable AI-enhanced e-commerce backend using Django REST Framework with JWT authentication, Redis caching, Celery async processing, inventory locking using database transactions, Dockerized deployment, and CI/CD integration.
