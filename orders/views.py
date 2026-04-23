@@ -22,6 +22,7 @@ class PlaceOrderView(APIView):
 
     def post(self, request):
         cart = get_or_create_cart(request.user)
+        idempotency_key = request.headers.get("Idempotency-Key")
 
         # ✅ Validate cart
         if not cart.items.exists():
@@ -34,7 +35,7 @@ class PlaceOrderView(APIView):
             )
 
         try:
-            order = create_order_from_cart(cart)
+            order = create_order_from_cart(cart, idempotency_key=idempotency_key)
 
         # ✅ Business logic errors
         except (DjangoValidationError, DRFValidationError) as e:

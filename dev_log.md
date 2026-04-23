@@ -342,20 +342,64 @@ Day 10: 3/4/26 ( system design)
 - Standardized response format:
   ```json
   { "success": true/false, "data/message": ... }
- 2.Inventory locking
+ 2.Inventory 
+ -create inventory model
+    seperatio of concerns
+    reserved stock
+    safety stock
+    available_stock()
+    indexing
+    onetoone relationshop
+-register in admin , make migrations
+3.stock migration
+backup db: copy db.sqlite3 db_backup.sqlite3
+
  3.Stock validation
  4.Stock reduction
- 5.Failure handling 
  6.Idempotency
  7.Order status flow
  8.Security
  9.Performance
  10.Add order history , detail api and pagination
+    transaction.atomic() — no partial writes
+    select_for_update() — prevents race conditions
+    Two-phase validation — avoids inconsistent state
+    bulk_create — efficient
+    Decimal — correct for money
+    Logging + error handling — good
 
- Day 11
+“I aggregate requested quantities per product variant before validation to prevent overselling in edge cases.
+“I optimized inventory updates using bulk_update to reduce database writes and improve performance under load.”
+
  Inventory system
+
  Inventory locking (select_for_update)
  Payment simulation
+ MUST DO:
+ 1. Idempotency
+ problem:
+ User clicks "Place Order" twice
+→ 2 requests hit backend
+→ 2 orders created ❌
+✅ Solution
+Attach a unique key to request
+→ Backend checks if already processed
+→ If yes → return existing order
+→ If no → create new order
+
+
+
+2. Order status flow
+3. RBAC
+4. Order APIs (pagination, history)
+IF POSSIBLE
+5. Payment simulation
+6. Redis caching
+7. Rate limiting
+bonus:
+8. Docker + Deployment
+- Recommendation system
+- Analytics dashboard
  
  Day 12
 ⚡ Enhancements (after core works)
